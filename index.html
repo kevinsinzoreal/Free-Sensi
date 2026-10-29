@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SinzoxSensi</title>
+<style>
+:root{
+  --bg:#0b0910;
+  --panel:#15111d;
+  --panel2:#191423;
+  --border:#2b2138;
+  --text:#f7f5fa;
+  --muted:#aaa2b5;
+  --purple:#b65cff;
+  --green:#25e886;
+  --cyan:#7fffd4;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+  radial-gradient(circle at 50% 0%,#1a1224 0,#0b0910 45%,#09080d 100%);
+  color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  min-height:100vh;
+}
+.wrap{width:min(100% - 28px,480px);margin:26px auto 34px}
+.shell{
+  border:1px solid var(--border);border-radius:28px;padding:28px 26px 34px;
+  background:rgba(15,11,21,.78);box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+.header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 14px 26px}
+.brand{font-size:21px;font-weight:800;letter-spacing:-.5px}
+.brand span{color:var(--purple)}
+.verified{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;margin-left:4px;border-radius:50%;
+  background:#168cff;color:#fff;font-size:12px;vertical-align:2px
+}
+.contact{
+  border:1px solid #275e58;border-radius:22px;padding:9px 13px;color:var(--cyan);
+  font-weight:700;font-size:14px;white-space:nowrap;background:#11161a
+}
+.status{
+  border:1px solid var(--border);background:rgba(25,19,34,.72);border-radius:17px;
+  padding:15px 16px;margin-bottom:35px;color:#c9c3cf;font-size:14px;line-height:1.65
+}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 12px rgba(37,232,134,.8);margin-right:7px}
+.status a{color:var(--cyan)}
+h2{font-size:21px;margin:0 0 18px;font-weight:850}
+.pack{
+  width:100%;border:1px solid var(--border);border-radius:18px;
+  background:linear-gradient(180deg,#171321,#14101c);color:var(--text);
+  padding:18px 18px;margin:0 0 15px;text-align:left;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  transition:.18s transform,.18s border-color,.18s box-shadow;
+}
+.pack:hover,.pack:focus-visible{transform:translateY(-1px);border-color:#5b3c73;box-shadow:0 8px 24px rgba(0,0,0,.25);outline:none}
+.pack.active{border-color:#8a50b0;box-shadow:0 0 0 1px #8a50b044 inset}
+.pack-left{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:850}
+.pack-icon{font-size:22px}
+.arrow{color:#8e849a;font-size:20px}
+.sensi-panel{
+  display:none;border:1px solid var(--border);border-radius:18px;
+  padding:15px;margin:-3px 0 15px;background:#100d17;
+  animation:fade .18s ease-out
+}
+.sensi-panel.open{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.sensi-title{font-size:15px;font-weight:800;color:#c9bfd2;margin:2px 2px 12px}
+.setting{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 13px;border:1px solid #251c30;border-radius:12px;
+  background:#17121f;margin:8px 0;font-size:14px
+}
+.setting strong{font-weight:750}
+.ok{color:var(--green);font-weight:800}
+.no{color:#ff6b6b;font-weight:800}
+.features{
+  margin-top:36px;border:1px solid var(--border);border-radius:20px;
+  padding:22px 26px 25px;background:rgba(20,15,28,.8)
+}
+.features h3{text-align:center;color:#70f5cf;font-size:20px;margin:0 0 20px}
+.feature{
+  border:1px solid #292033;background:#17121f;border-radius:12px;
+  padding:13px 15px;margin:0 0 13px;color:#c7c0cf;font-size:14px
+}
+.footer{text-align:center;color:#6f667b;font-size:14px;margin-top:38px}
+@media(max-width:390px){
+  .shell{padding:24px 18px 30px}
+  .header{margin-left:10px;margin-right:10px}
+  .contact{font-size:12px;padding:8px 10px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <main class="shell">
+    <div class="header">
+      <div class="brand">Sinzox<span>Sensi</span> <i class="verified">✓</i></div>
+      <div class="contact">◉ +unavailable</div>
+    </div>
+
+    <div class="status">
+      <span class="dot"></span>• All system operational • 24/7 support
+      <br>• Free sensi packs — tap any RAM option below
+    </div>
+
+    <h2>SENSI PACKS ⚡</h2>
+
+    <button class="pack" data-target="ram4">
+      <span class="pack-left"><span class="pack-icon">📁</span>4 GB RAM</span>
+      <span class="arrow">›</span>
+    </button>
+    <div class="sensi-panel" id="ram4"></div>
+
+    <button class="pack" data-target="ram6">
+      <span class="pack-left"><span class="pack-icon">📁</span>6 GB RAM</span>
+      <span class="arrow">›</span>
+    </button>
+    <div class="sensi-panel" id="ram6"></div>
+
+    <button class="pack" data-target="ram8">
+      <span class="pack-left"><span class="pack-icon">📁</span>8 GB RAM</span>
+      <span class="arrow">›</span>
+    </button>
+    <div class="sensi-panel" id="ram8"></div>
+
+    <button class="pack" data-target="ram12">
+      <span class="pack-left"><span class="pack-icon">📁</span>12 GB RAM</span>
+      <span class="arrow">›</span>
+    </button>
+    <div class="sensi-panel" id="ram12"></div>
+
+    <section class="features">
+      <h3>PHONE SETTINGS</h3>
+      <div class="feature"><span class="dot"></span> DISPLAY SIZE ( SMALL )</div>
+      <div class="feature"><span class="dot"></span> REMOVE ANIMAION ( ON )</div>
+      <div class="feature"><span class="dot"></span> TOUCH & HOLDDELAY ( SHORT )</div>
+      <div class="feature"><span class="dot"></span> LARGE MOUSE CURSOR ( ON )</div>
+      <div class="feature"><span class="dot"></span> DWELL TIMING ( SHORT )</div>
+      <div class="feature"><span class="dot"></span> POINTER SPEED ( 100% )</div>
+      <div class="feature"><span class="dot"></span> EXPLORE BY TOUCH ( ON )</div>
+      <div class="feature"><span class="dot"></span> LOG BUFFER SIZE ( 256KB )</div>
+      <div class="feature"><span class="dot"></span> SELECT LOG LEVEL ( WARN )</div>
+      <div class="feature"><span class="dot"></span> ANIMATION SCALES ( 0.5x )</div>
+      <div class="feature"><span class="dot"></span> FORCE 4x MSAA ( ON )</div>
+      <div class="feature"><span class="dot"></span> SWITCH ACCESS SETINGS !
+
+ENABEL CUSTOMISATION ( ON )
+AUTO SCANS < NO. OF SCANS ( 1 LOOP )
+AUTO SCAN TIME (0.000009)</div>
+    </section>
+
+    <div class="footer">SinzoxSensi ⚡</div>
+  </main>
+</div>
+
+<script>
+const data = {
+  ram4: {
+    title:"4 GB RAM SENSI",
+    rows:[
+      ["DPI","523","ok"],["FIRE BUTTON","47","ok"],["GENERAL","182","ok"],
+      ["RED DOT","0","ok"],["2X SCOPE","190","ok"],["4X SCOPE","200","ok"],
+      ["SNIPER SCOPEE","195","ok"],["FREE CAMERA BUTTON","200","ok"]
+    ]
+  },
+  ram6: {
+    title:"6 GB RAM SENSI",
+    rows:[
+      ["DPI","480","ok"],["FIRE BUTTON","47","ok"],["GENERAL","175","ok"],
+      ["RED DOT","0","ok"],["2X SCOPE","178","ok"],["4X SCOPE","184","ok"],
+      ["SNIPER SCOPEE","155","ok"],["FREE CAMERA BUTTON","170","ok"]
+    ]
+  },
+  ram8: {
+    title:"8 GB RAM SENSI",
+    rows:[
+      ["DPI","440","ok"],["FIRE BUTTON","53","ok"],["GENERAL","163","ok"],
+      ["RED DOT","0","ok"],["2X SCOPE","160","ok"],["4X SCOPE","134","ok"],
+      ["SNIPER SCOPEE","135","ok"],["FREE CAMERA BUTTON","150","ok"]
+    ]
+  },
+  ram12: {
+    title:"12 GB RAM SENSI",
+    rows:[
+      ["DPI","NO","no"],["FIRE BUTTON","53","ok"],["GENERAL","133","ok"],
+      ["RED DOT","0","ok"],["2X SCOPE","122","ok"],["4X SCOPE","110","ok"],
+      ["SNIPER SCOPEE","80","ok"],["FREE CAMERA BUTTON","90","ok"]
+    ]
+  }
+};
+
+for (const [id, pack] of Object.entries(data)) {
+  const panel=document.getElementById(id);
+  panel.innerHTML =
+    `<div class="sensi-title">${pack.title}</div>` +
+    pack.rows.map(([name,val,state]) =>
+      `<div class="setting"><strong>${name}</strong><span>${val} <span class="${state}">${state==="ok"?"✅":"❌"}</span></span></div>`
+    ).join("");
+}
+
+document.querySelectorAll(".pack").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const panel=document.getElementById(btn.dataset.target);
+    const wasOpen=panel.classList.contains("open");
+    document.querySelectorAll(".sensi-panel").forEach(p=>p.classList.remove("open"));
+    document.querySelectorAll(".pack").forEach(b=>b.classList.remove("active"));
+    if(!wasOpen){
+      panel.classList.add("open");
+      btn.classList.add("active");
+      setTimeout(()=>panel.scrollIntoView({behavior:"smooth",block:"nearest"}),30);
+    }
+  });
+});
+</script>
+</body>
+</html>
